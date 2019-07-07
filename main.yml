@@ -1,6 +1,6 @@
 ---
 
-- name: Modificacion plantilla Ubuntu
+- name: Modificacion plantilla Centos 7
   hosts: template
   gather_facts: false
 
