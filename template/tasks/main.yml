@@ -1,22 +1,14 @@
 ---
 # tasks file for template
 
-- name: 1of3 Check if EPEL repo is already configured.
-  stat: path={{ epel_repofile_path }}
-  register: epel_repofile_result
- 
-- name: 2of2 Install EPEL repo.
-  yum:
-    name: "{{ epel_repo_url }}"
+- name: Install external EPEL repository
+  yum_repository:
+    name: epel
     state: present
-  register: result
-  when: not epel_repofile_result.stat.exists
- 
-- name: 3of3 Import EPEL GPG key.
-  rpm_key:
-    key: "{{ epel_repo_gpg_key_url }}"
-    state: present
-  when: not epel_repofile_result.stat.exists
+    description: EPEL YUM repo
+    baseurl: "https://dl.fedoraproject.org/pub/epel/$releasever/$basearch/"
+    gpgkey: "https://dl.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-{{ ansible_distribution_major_version }}"
+    gpgcheck: "yes"
 
 - name: Upgrade all packages
   yum:
