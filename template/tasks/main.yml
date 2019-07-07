@@ -14,10 +14,10 @@
 
 
 - name: Change IP
-   replace: 
-     path: /etc/sysconfig/network-scripts/ifcfg-eth0
-     regexp: '^IPADDR="172.26.0.21"'
-     line: 'IPADDR="{{ ip_equipo }}"'
+  replace: 
+    path: /etc/sysconfig/network-scripts/ifcfg-eth0
+    regexp: '^IPADDR="172.26.0.21"'
+    line: 'IPADDR="{{ ip_equipo }}"'
 
 
 #- name: Restart server
