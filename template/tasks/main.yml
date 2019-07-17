@@ -10,15 +10,18 @@
 #  yum:
 #    name: '*'
 #    state: latest
-
-
-
+#
 - name: Change IP
   replace: 
     path: /etc/sysconfig/network-scripts/ifcfg-eth0
     regexp: '^IPADDR="172.26.0.21"'
     replace: 'IPADDR="{{ ip_equipo }}"'
 
+- name: Change Hostname
+  replace: 
+    path: /etc/hostname
+    regexp: '^template'
+    replace: '{{ hostname_equipo  }}'
 
 #- name: Restart server
 #  shell: sleep 2 && shutdown -r now
