@@ -29,7 +29,6 @@
   vars:
     packages:
     - htop
-    - hyperv-daemons
 
 #- name: Restart server
 #  shell: sleep 2 && shutdown -r now
