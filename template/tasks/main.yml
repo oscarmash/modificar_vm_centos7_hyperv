@@ -1,11 +1,11 @@
 ---
 # tasks file for template
 
-#- name: Install epel-release
-#  yum:
-#    name: epel-release
-#    state: latest
-#
+- name: Install epel-release
+  yum:
+    name: epel-release
+    state: latest
+
 #- name: Upgrade all packages
 #  yum:
 #    name: '*'
@@ -22,6 +22,14 @@
     path: /etc/hostname
     regexp: '^template'
     replace: '{{ hostname_equipo  }}'
+
+- name: Intalacion de paquetes
+  yum:
+    name: "{{ packages }}"
+  vars:
+    packages:
+    - htop
+    - hyperv-daemons
 
 #- name: Restart server
 #  shell: sleep 2 && shutdown -r now
