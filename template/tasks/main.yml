@@ -18,6 +18,11 @@
     name: sshd
     state: restarted
 
+- name: Configuracion fichero hosts
+  template:
+    src: templates/hosts
+    dest: /etc/hosts
+
 - name: Install epel-release
   yum:
     name: epel-release
