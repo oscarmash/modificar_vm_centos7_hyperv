@@ -18,6 +18,12 @@
     name: sshd
     state: restarted
 
+- name: SELINUX to disabled
+  replace:
+    path: /etc/selinux/config
+    regexp: '^SELINUX=enforcing'
+    replace: 'SELINUX=disabled'
+
 - name: Configuracion fichero hosts
   template:
     src: templates/hosts
